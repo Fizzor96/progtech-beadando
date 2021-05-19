@@ -1,0 +1,3 @@
+C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/build/CMakeFiles/progtech.dir
+C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/build/CMakeFiles/edit_cache.dir
+C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/build/CMakeFiles/rebuild_cache.dir
