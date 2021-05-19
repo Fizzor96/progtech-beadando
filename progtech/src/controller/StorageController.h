@@ -1,10 +1,27 @@
-#include <iostream>
+#pragma once
 
-class StorageController
+#include <iostream>
+#include "../interfaces/ISub.h"
+#include "../model/Storage.h"
+
+class StorageController : public ISub
 {
 private:
-    /* data */
+    static Storage storage;
+
 public:
-    StorageController(/* args */);
-    ~StorageController();
+    void fillStorageByType(const char *bookType, const char *altType)
+    {
+        //implementation
+    }
+    void removeBookFromStorage(const Book &book)
+    {
+        //implementation
+    }
+    void notifyObserver(const Book &book, float price)
+    {
+        //implementation
+    }
+    StorageController() {}
+    ~StorageController() {}
 };
