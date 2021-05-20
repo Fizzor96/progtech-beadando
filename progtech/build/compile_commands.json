@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/szoke/Documents/GitHub/progtech-beadando/progtech/build",
+  "command": "C:\\TDM-GCC-32\\bin\\mingw32-g++.exe    -static-libgcc -static-libstdc++ -g -std=gnu++14 -o CMakeFiles\\progtech.dir\\src\\main.cpp.obj -c C:\\Users\\szoke\\Documents\\GitHub\\progtech-beadando\\progtech\\src\\main.cpp",
+  "file": "C:/Users/szoke/Documents/GitHub/progtech-beadando/progtech/src/main.cpp"
+}
+]

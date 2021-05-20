@@ -4,13 +4,6 @@
 #include <vector>
 #include "Book.h"
 
-// instanceof implementation
-template <typename Base, typename T>
-inline bool instanceof (const T *)
-{
-    return is_base_of<Base, T>::value;
-}
-
 class Storage
 {
 private:
