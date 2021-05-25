@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Pdf : public AddonDecorator
+class Physical : public AddonDecorator
 {
 public:
     float getCost() const override
@@ -32,14 +32,14 @@ public:
         return this->book;
     }
 
-    Pdf() {}
+    Physical() {}
 
-    Pdf(const Book &b)
+    Physical(const Book &b)
     {
         this->book = b;
-        this->cost = b.getCost() + 0.88;
-        this->description = b.getDescription() + " (Pdf)";
+        this->cost = b.getCost() + 0.77;
+        this->description = b.getDescription() + " (EPUB)";
     }
 
-    ~Pdf();
+    ~Physical();
 };

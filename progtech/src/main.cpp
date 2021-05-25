@@ -19,6 +19,6 @@ int main()
         std::cerr << e << '\n';
     }
 
-    system("pause");
+    // system("pause");
     return 0;
 }

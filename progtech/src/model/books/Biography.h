@@ -28,7 +28,7 @@ public:
 
     Biography()
     {
-        this->cost = 20.4;
+        this->cost = 22.2;
         this->description = "One Biography book etc, etc.";
     }
     ~Biography() {}

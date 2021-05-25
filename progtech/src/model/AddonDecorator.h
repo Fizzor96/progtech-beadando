@@ -14,12 +14,12 @@ public:
         return this->book.getCost();
     }
 
-    void setCost(float cost) override
+    void setCost(const float &cost) override
     {
         this->book.setCost(cost);
     }
 
-    std::string getDescription() override
+    std::string getDescription() const override
     {
         return this->book.getDescription();
     }
@@ -28,6 +28,8 @@ public:
     {
         this->book.setDescription(desc);
     }
+
+    AddonDecorator() {}
 
     AddonDecorator(const std::string &bookType)
     {
