@@ -41,5 +41,5 @@ public:
         this->description = b.getDescription() + " (Txt)";
     }
 
-    ~Txt();
+    ~Txt() {}
 };

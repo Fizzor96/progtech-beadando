@@ -41,5 +41,5 @@ public:
         this->description = b.getDescription() + " (EPUB)";
     }
 
-    ~Physical();
+    ~Physical() {}
 };

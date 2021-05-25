@@ -38,5 +38,5 @@ public:
         this->book.setBookType(bookType);
     }
 
-    ~AddonDecorator();
+    virtual ~AddonDecorator() {}
 };

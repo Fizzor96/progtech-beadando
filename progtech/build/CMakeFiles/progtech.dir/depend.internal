@@ -3,12 +3,21 @@
 
 CMakeFiles/progtech.dir/src/main.cpp.obj
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/controller/StorageController.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/factory/BookFactory.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/interfaces/IStorageObser.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/interfaces/ISub.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/main.cpp
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/AddonDecorator.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/Book.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/Storage.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/addons/Epub.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/addons/Pdf.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/addons/Physical.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/addons/Txt.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/Biography.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/Gastronomy.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/History.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/Technology.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/view/Log.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/view/LogCost.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/view/LogStorage.h

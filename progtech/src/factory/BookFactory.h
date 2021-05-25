@@ -17,7 +17,7 @@ using namespace std;
 class BookFactory
 {
 public:
-    static Book makeBook(std::string &bookType, std::string &ext);
+    static Book makeBook(std::string bookType, std::string ext);
     static Book addExt(const Book &b, std::string &ext);
     BookFactory(/* args */);
     ~BookFactory();
@@ -52,7 +52,7 @@ Book BookFactory::addExt(const Book &b, std::string &ext)
     }
 }
 
-Book BookFactory::makeBook(std::string &bookType, std::string &ext)
+Book BookFactory::makeBook(std::string bookType, std::string ext)
 {
     for (auto &c : bookType)
     {
