@@ -14,6 +14,11 @@ protected:
     std::string bookExtension;
 
 public:
+    void toStr()
+    {
+        std::cout << this->cost << " " << this->bookType << " " << this->bookExtension << " " << this->description << std::endl;
+    }
+
     virtual std::string getBookExtension()
     {
         return this->bookExtension;
@@ -59,7 +64,23 @@ public:
         setCost(price);
     }
 
-    Book() {}
+    Book()
+    {
+        // this->bookExtension = "";
+        // this->bookType = "";
+        // this->description = "";
+    }
+
+    Book(std::string bookType)
+    {
+        this->bookType = bookType;
+    }
+
+    Book(std::string bookType, std::string ext)
+    {
+        this->bookType = bookType;
+        this->bookExtension = ext;
+    }
 
     ~Book() {}
 

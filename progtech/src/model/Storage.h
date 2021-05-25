@@ -13,7 +13,7 @@ class Storage
 private:
     static Storage *firstInstance;
     static unsigned int max_quantity;
-    std::vector<Book> bookStorage;
+    std::vector<Book *> bookStorage;
     Storage() {}
 
 public:
@@ -21,13 +21,18 @@ public:
 
     static void deleteStorageInstance();
 
+    unsigned int getBookStorageSize()
+    {
+        return bookStorage.size();
+    }
+
     ~Storage()
     {
         //delete heap allocated objs (otherwise memoryleak)
         delete firstInstance;
     }
 
-    void add(const Book &book)
+    void add(Book *book)
     {
         if (validateQuantity(book))
         {
@@ -43,7 +48,7 @@ public:
     {
         for (size_t i = 0; i < bookStorage.size(); i++)
         {
-            if (bookStorage[i].getBookType() == book.getBookType())
+            if (bookStorage[i]->getBookType() == book.getBookType())
             {
                 bookStorage.erase(bookStorage.begin() + i);
             }
@@ -60,56 +65,32 @@ public:
         {
             for (size_t i = 0; i < bookStorage.size(); i++)
             {
-                if (bookStorage[i].getBookType() == bookType)
+                if (bookStorage[i]->getBookType() == bookType)
                 {
-                    return &bookStorage[i];
+                    return bookStorage[i];
                 }
             }
         }
-        catch (const std::exception &e)
+        catch (const char *e)
         {
             throw "No book of this type present!";
         }
         return nullptr;
     }
 
-    //validation based on "types" are impossible, cuz types are not exist in the memory!!
-    bool validateQuantity(Book book)
+    std::vector<Book *> getFilteredBooksByType(Book book)
     {
-        if (!bookStorage.empty())
-        {
-            unsigned int counter = 0;
-            for (auto b : bookStorage)
-            {
-                if (b.getBookType() == book.getBookType())
-                {
-                    counter++;
-                    if (counter >= max_quantity)
-                    {
-                        return false;
-                    }
-                }
-            }
-        }
-        else
-        {
-            throw "Invalid parameter value in Storage.validateQuantity";
-        }
-        return true;
-    }
-
-    std::vector<Book> getFilteredBooksByType(Book book)
-    {
-        std::vector<Book> filtered;
+        std::vector<Book *> filtered;
         try
         {
             if (!bookStorage.empty())
             {
                 for (auto b : bookStorage)
                 {
-                    if (b.getBookType() == book.getBookType())
+                    if (b->getBookType() == book.getBookType())
                     {
-                        filtered.push_back(b);
+                        Book *temp = new Book(*b);
+                        filtered.push_back(temp);
                     }
                 }
                 if (filtered.size() != 0)
@@ -134,27 +115,61 @@ public:
         return asd;
     }
 
-    void fillStorageByType(Book book)
+    //validation based on "types" are impossible, cuz types are not exist in the memory!!
+    bool validateQuantity(Book *book)
+    {
+        // cout << "S validatequantityfunc func" << endl;
+        if (bookStorage.size() != 0)
+        {
+            unsigned int counter = 0;
+            for (auto b : bookStorage)
+            {
+                if (b->getBookType() == book->getBookType())
+                {
+                    counter++;
+                    if (counter >= max_quantity)
+                    {
+                        // std::cout << "false" << std::endl;
+                        return false;
+                    }
+                }
+            }
+        }
+        else if (bookStorage.size() == 0)
+        {
+            // std::cout << "true" << std::endl;
+            return true;
+        }
+        else
+        {
+            throw "Invalid parameter value in Storage.validateQuantity";
+        }
+    }
+
+    void fillStorageByType(Book *book)
     {
         while (validateQuantity(book))
         {
-            if (book.getBookType() == "biography")
-            {
-                bookStorage.push_back(Biography());
-            }
-            else if (book.getBookType() == "gastronomy")
-            {
-                bookStorage.push_back(Gastronomy());
-            }
-            else if (book.getBookType() == "history")
-            {
-                bookStorage.push_back(History());
-            }
-            else if (book.getBookType() == "technology")
-            {
-                bookStorage.push_back(Technology());
-            }
+            bookStorage.push_back(new Book(book->getBookType()));
+            // if (book->getBookType() == "biography")
+            // {
+            //     bookStorage.push_back(new Book(book->getBookType()));
+            // }
+            // else if (book->getBookType() == "gastronomy")
+            // {
+            //     bookStorage.push_back(new Gastronomy());
+            // }
+            // else if (book->getBookType() == "history")
+            // {
+            //     bookStorage.push_back(new History());
+            // }
+            // else if (book->getBookType() == "technology")
+            // {
+            //     bookStorage.push_back(new Technology());
+            // }
+            // std::cout << bookStorage.size() << std::endl;
         }
+        // std::cout << bookStorage.size() << std::endl;
     }
 };
 
@@ -162,7 +177,7 @@ public:
 
 Storage *Storage::firstInstance = nullptr;
 
-unsigned int Storage::max_quantity = 500;
+unsigned int Storage::max_quantity = 600;
 
 Storage *Storage::getStorageInstance()
 {

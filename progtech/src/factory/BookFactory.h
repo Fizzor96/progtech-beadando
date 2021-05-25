@@ -17,13 +17,13 @@ using namespace std;
 class BookFactory
 {
 public:
-    static Book makeBook(std::string bookType, std::string ext);
-    static Book addExt(const Book &b, std::string &ext);
+    static Book *makeBook(std::string bookType, std::string ext);
+    static Book *addExt(Book *b, std::string ext);
     BookFactory(/* args */);
     ~BookFactory();
 };
 
-Book BookFactory::addExt(const Book &b, std::string &ext)
+Book *BookFactory::addExt(Book *b, std::string ext)
 {
     for (auto &c : ext)
     {
@@ -32,63 +32,72 @@ Book BookFactory::addExt(const Book &b, std::string &ext)
 
     if (ext == "epub")
     {
-        return Epub(b);
+        return new Epub(*b);
     }
     else if (ext == "pdf")
     {
-        return Pdf(b);
+        return new Pdf(*b);
     }
     else if (ext == "physical")
     {
-        return Physical(b);
+        return new Physical(*b);
     }
     else if (ext == "txt")
     {
-        return Txt(b);
+        return new Txt(*b);
     }
     else
     {
-        throw "Invalid parameter value in CoffeeFactory.addFlavour()";
+        throw "Invalid parameter value in BookFactory.addExtension()";
     }
 }
 
-Book BookFactory::makeBook(std::string bookType, std::string ext)
+Book *BookFactory::makeBook(std::string bookType, std::string ext)
 {
-    for (auto &c : bookType)
-    {
-        c = tolower(c);
-    }
+    // for (auto &c : bookType)
+    // {
+    //     c = tolower(c);
+    // }
 
     if (bookType == "biography")
     {
         if (ext != "")
         {
-            return addExt(Biography(), ext);
+            // return addExt(new Book("biography", ext), ext);
+            return new Book(bookType, ext);
         }
-        return Biography();
+        // return new Biography();
+        return new Book(bookType);
     }
     else if (bookType == "gastronomy")
     {
         if (ext != "")
         {
-            return addExt(Gastronomy(), ext);
+            // return addExt(new Gastronomy(), ext);
+            return new Book(bookType, ext);
         }
-        return Gastronomy();
+        // return new Gastronomy();
+        return new Book(bookType);
     }
     else if (bookType == "history")
     {
         if (ext != "")
         {
-            return addExt(History(), ext);
+            // return addExt(new History(), ext);
+            return new Book(bookType, ext);
         }
-        return History();
+        // return new History();
+        return new Book(bookType);
     }
     else if (bookType == "technology")
     {
         if (ext != "")
         {
-            return addExt(Technology(), ext);
+            // return addExt(new Technology(), ext);
+            return new Book(bookType, ext);
         }
+        // return new Technology();
+        return new Book(bookType);
     }
     else
     {

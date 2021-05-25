@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "../interfaces/ISub.h"
 #include "../model/Storage.h"
 #include "../factory/BookFactory.h"
@@ -30,14 +31,16 @@ public:
 
     void seedStorage()
     {
-        fillStorageByType(std::string("biography"), std::string(""));
-        fillStorageByType(std::string("biography"), std::string(""));
-        fillStorageByType(std::string("biography"), std::string(""));
-        fillStorageByType(std::string("biography"), std::string(""));
+        // cout << "SC seed storage func" << endl;
+        fillStorageByType(std::string("biography"), std::string("physical"));
+        fillStorageByType(std::string("gastronomy"), std::string("physical"));
+        fillStorageByType(std::string("history"), std::string("physical"));
+        fillStorageByType(std::string("technology"), std::string("physical"));
+        std::cout << "Storage size after seed = " << storage->getBookStorageSize() << endl;
     }
-    void fillStorageByType(const std::string &bookType, const std::string &altType)
+    void fillStorageByType(std::string bookType, std::string ext)
     {
-        //implementation
+        storage->fillStorageByType(new Book(bookType, ext));
     }
     void addBookToStorage(std::string bookType, std::string ext)
     {
@@ -58,9 +61,20 @@ public:
 
     void notifyObserver(Book book, float price)
     {
-        //implementation
+        try
+        {
+            for (Book *b : storage->getFilteredBooksByType(book))
+            {
+                b->update(price);
+            }
+        }
+        catch (const char *e)
+        {
+            throw "Price of " + book.getBookType() + " is set to " + std::to_string(price);
+        }
     }
-    Book makeBook(std::string bookType, std::string ext)
+
+    Book *makeBook(std::string bookType, std::string ext)
     {
         try
         {
@@ -92,53 +106,110 @@ public:
     }
     std::string chooseBookType()
     {
-        //implementation
+        std::string bookType = Log::getUserInput(logStorage.getBookOptions());
+        if (bookType == "1")
+        {
+            return std::string("biography");
+        }
+        else if (bookType == "2")
+        {
+            return std::string("gastronomy");
+        }
+        else if (bookType == "3")
+        {
+            return std::string("history");
+        }
+        else if (bookType == "4")
+        {
+            return std::string("technology");
+        }
+        else
+        {
+            throw "Invalid input was given!";
+        }
     }
-    std::string chooseAltType()
+    std::string chooseExtension()
     {
-        //implementation
+        std::string isExtOpt = Log::getUserInput(logStorage.getIsExtensionOptions());
+        std::string bookType;
+        if (isExtOpt == "y")
+        {
+            bookType = Log::getUserInput(logStorage.getExtensionOptions());
+            if (bookType == "1")
+            {
+                return std::string("txt");
+            }
+            else if (bookType == "2")
+            {
+                return std::string("epub");
+            }
+            else if (bookType == "3")
+            {
+                return std::string("pdf");
+            }
+            else
+            {
+                throw "Invalid input was given!";
+            }
+        }
+        else if (isExtOpt == "n")
+        {
+            return std::string("physical");
+        }
+        else
+        {
+            throw "Invalid input was given!";
+        }
     }
-    void orderBook()
+    void orderBook(std::string bookType)
     {
-        //implementation
+        Book b = *storage->getBookByType(bookType);
+        std::string response = "Coffee was ordered for: " + std::to_string(b.getCost());
+        removeBookFromStorage(b);
+        Log::promptOutput(response);
     }
-    void setPrice()
+    void setPrice(std::string bookType, float price)
     {
-        //implementation
+        notifyObserver(*storage->getBookByType(bookType), price);
     }
     void handleUserInput()
     {
-        string o;
+        string o = Log::getUserInput(logStorage.getStorageOptions());
         string bookType;
-        string altType;
+        string extension;
         while (isRunning)
         {
             try
             {
-                cin >> o;
                 if (o != "")
                 {
                     if (o == "1")
                     {
-                        /* code */
+                        bookType = chooseBookType();
+                        extension = chooseExtension();
+                        orderBook(bookType);
                     }
                     else if (o == "2")
                     {
-                        /* code */
+                        bookType = chooseBookType();
+                        extension = chooseExtension();
+                        fillStorageByType(bookType, extension);
                     }
                     else if (o == "3")
                     {
-                        /* code */
+                        Log::promptOutput(storage->getQuantityAllByType());
                     }
                     else if (o == "4")
                     {
-                        /* code */
+                        bookType = chooseBookType();
+                        extension = chooseExtension();
+                        float price = std::stof(Log::getUserInput(logCost.getCostChangeOpstion()));
+                        setPrice(bookType, price);
                     }
                     else if (o == "q")
                     {
                         isRunning = false;
                     }
-                    // Default
                     else
                     {
                         throw "Invalid input!";

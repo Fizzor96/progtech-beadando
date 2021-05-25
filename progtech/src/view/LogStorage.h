@@ -11,8 +11,8 @@ class LogStorage : public Log
 private:
     std::string storageOptions = "*************** Book Storage App ***************\n1. Order\n2.Fill Storage\n3.Show Storage\n4.Manage price\nq.Quit ";
     std::string bookOptions = "Enter the number of the book.\n1. Biography\n2. Gastronomy\n3. History\n4. Technology\n";
-    std::string isEbookOptions = "Do you want online copy? (y/n)";
-    std::string ebookOptions = "Enter the number of the format.\n1. TXT\n2. EPUB\n3. PDF\n";
+    std::string isExtensionOptions = "Do you want online copy? (y/n)";
+    std::string extensionOptions = "Enter the number of the format.\n1. TXT\n2. EPUB\n3. PDF\n";
 
 public:
     std::string getStorageOptions()
@@ -25,14 +25,14 @@ public:
         return this->bookOptions;
     }
 
-    std::string getIsEbookOptions()
+    std::string getIsExtensionOptions()
     {
-        return this->isEbookOptions;
+        return this->isExtensionOptions;
     }
 
-    std::string getEbookOptions()
+    std::string getExtensionOptions()
     {
-        return this->ebookOptions;
+        return this->extensionOptions;
     }
 
     LogStorage() {}
