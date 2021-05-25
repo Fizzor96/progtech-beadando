@@ -8,3 +8,7 @@ CMakeFiles/progtech.dir/src/main.cpp.obj
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/main.cpp
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/Book.h
  C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/Storage.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/Biography.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/Gastronomy.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/History.h
+ C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/model/books/Technology.h

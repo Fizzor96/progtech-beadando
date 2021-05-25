@@ -130,6 +130,8 @@ public:
 
     std::string getQuantityAllByType()
     {
+        std::string asd = "";
+        return asd;
     }
 
     void fillStorageByType(Book book)

@@ -12,5 +12,6 @@ public:
     ISub() {}
     ~ISub() {}
     ISub(const ISub &other) = delete;
+    ISub(ISub &&other) = delete;
     ISub &operator=(const ISub &other) = delete;
 };

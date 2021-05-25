@@ -7,4 +7,8 @@ CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/interfaces/ISub.h
 CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/main.cpp
 CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/model/Book.h
 CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/model/Storage.h
+CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/model/books/Biography.h
+CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/model/books/Gastronomy.h
+CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/model/books/History.h
+CMakeFiles/progtech.dir/src/main.cpp.obj: ../src/model/books/Technology.h
 
