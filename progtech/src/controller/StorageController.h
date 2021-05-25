@@ -14,7 +14,7 @@ private:
     bool isRunning;
 
 public:
-    void fillStorageByType(const char *bookType, const char *altType)
+    void fillStorageByType(const std::string &bookType, const std::string &altType)
     {
         //implementation
     }

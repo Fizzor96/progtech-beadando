@@ -92,7 +92,7 @@ public class Storage {
                 ((ChocolateFlavour) coffee).coffeeType instanceof Cappuccino)).count()) + "\n";
         return temp;
     }
-    //I tried...
+    
     public boolean validateQuantity(Coffee coffee) throws IllegalArgumentException {
         if(!coffeeStorage.isEmpty()) {
             if (coffee instanceof Espresso) {
