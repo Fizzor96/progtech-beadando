@@ -7,11 +7,22 @@
 
 class Book : public IStorageObser
 {
-private:
+protected:
     float cost;
     std::string description;
+    std::string bookType;
 
 public:
+    virtual std::string getBookType()
+    {
+        return this->bookType;
+    }
+
+    virtual void setBookType(const std::string &bType)
+    {
+        this->bookType = bType;
+    }
+
     virtual float getCost() const
     {
         return this->cost;
@@ -24,12 +35,12 @@ public:
     {
         return this->description;
     }
-    virtual void setDescription(const char *descriptstr)
+    virtual void setDescription(const std::string &desc)
     {
-        this->description = static_cast<std::string>(description);
+        this->description = static_cast<std::string>(desc);
     }
 
-    void update(const float &price) override
+    void update(const float &price)
     {
         setCost(price);
     }

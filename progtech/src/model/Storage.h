@@ -13,14 +13,9 @@ private:
     Storage() {}
 
 public:
-    Storage *getStorageInstance()
-    {
-        if (firstInstance == nullptr)
-        {
-            firstInstance = new Storage();
-        }
-        return firstInstance;
-    }
+    static Storage *getStorageInstance();
+
+    static void deleteStorageInstance();
 
     ~Storage()
     {
@@ -30,7 +25,7 @@ public:
 
     void add(const Book &book)
     {
-    }
+        }
 
     //validation based on "types" are impossible, cuz types are not exist in the memory!!
     bool validateQuantity(const Book &book)
@@ -43,4 +38,19 @@ public:
 };
 
 Storage *Storage::firstInstance = nullptr;
+
 unsigned int Storage::max_quantity = 500;
+
+Storage *Storage::getStorageInstance()
+{
+    if (firstInstance == nullptr)
+    {
+        firstInstance = new Storage();
+    }
+    return firstInstance;
+}
+
+void Storage::deleteStorageInstance()
+{
+    firstInstance = nullptr;
+}

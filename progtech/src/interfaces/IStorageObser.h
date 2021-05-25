@@ -9,7 +9,7 @@ class IStorageObser
 private:
     /* data */
 public:
-    virtual void update(const float &price);
+    virtual void update(const float &price) = 0;
     IStorageObser() {}
     ~IStorageObser() {}
 };

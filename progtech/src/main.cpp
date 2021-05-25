@@ -7,17 +7,18 @@ using namespace std;
 
 int main()
 {
+    cout << "Progtech Beadando - Szoke Dominik\n\n";
+
     std::unique_ptr<StorageController> sc = std::make_unique<StorageController>();
     try
     {
         sc->handleUserInput();
     }
-    catch (const std::exception &e)
+    catch (const char *e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e << '\n';
     }
 
-    cout << "Progtech Beadando - Szoke Dominik\n";
     system("pause");
     return 0;
 }

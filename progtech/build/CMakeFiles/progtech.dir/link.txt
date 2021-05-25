@@ -1,3 +1,3 @@
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E rm -f CMakeFiles\progtech.dir/objects.a
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\progtech.dir/objects.a
 C:\TDM-GCC-32\bin\ar.exe cr CMakeFiles\progtech.dir/objects.a @CMakeFiles\progtech.dir\objects1.rsp
 C:\TDM-GCC-32\bin\mingw32-g++.exe  -static-libgcc -static-libstdc++ -g  -static-libgcc -static-libstdc++ -s -Wl,--whole-archive CMakeFiles\progtech.dir/objects.a -Wl,--no-whole-archive -o progtech.exe -Wl,--out-implib,libprogtech.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\progtech.dir\linklibs.rsp

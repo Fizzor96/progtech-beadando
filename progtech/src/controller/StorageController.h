@@ -5,6 +5,8 @@
 #include "../interfaces/ISub.h"
 #include "../model/Storage.h"
 
+using namespace std;
+
 class StorageController : public ISub
 {
 private:
@@ -31,34 +33,41 @@ public:
         string altType;
         while (isRunning)
         {
-            cin >> o;
-            if (o != "")
+            try
             {
-                if (o == "1")
+                cin >> o;
+                if (o != "")
                 {
-                    /* code */
+                    if (o == "1")
+                    {
+                        /* code */
+                    }
+                    else if (o == "2")
+                    {
+                        /* code */
+                    }
+                    else if (o == "3")
+                    {
+                        /* code */
+                    }
+                    else if (o == "4")
+                    {
+                        /* code */
+                    }
+                    else if (o == "q")
+                    {
+                        isRunning = false;
+                    }
+                    // Default
+                    else
+                    {
+                        throw "Invalid input!";
+                    }
                 }
-                else if (o == "2")
-                {
-                    /* code */
-                }
-                else if (o == "3")
-                {
-                    /* code */
-                }
-                else if (o == "4")
-                {
-                    /* code */
-                }
-                else if (o == "q")
-                {
-                    isRunning = false;
-                }
-                // Default
-                else
-                {
-                    throw "Invalid input!";
-                }
+            }
+            catch (const char *e)
+            {
+                throw e;
             }
         }
     }

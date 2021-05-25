@@ -19,4 +19,6 @@ public:
     }
     Log() {}
     ~Log() {}
+    Log(const Log &other) = delete;
+    Log &operator=(const Log &other) = delete;
 };

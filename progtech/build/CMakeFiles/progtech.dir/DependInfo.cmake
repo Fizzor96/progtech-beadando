@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/szoke/Documents/GitHub/progtech-beadando/progtech/src/main.cpp" "C:/Users/szoke/Documents/GitHub/progtech-beadando/progtech/build/CMakeFiles/progtech.dir/src/main.cpp.obj"
+  "C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/src/main.cpp" "C:/Users/szoke/Downloads/GitHub/progtech-beadando/progtech/build/CMakeFiles/progtech.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
