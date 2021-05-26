@@ -44,6 +44,8 @@ Igazabol nem tudom, hogy miert raktam bele Singletont, mivel a gyakorlatban nem 
 Sok kulonbozo tipusu kony van, azonban ezekhez tarsul meg a kiterjesztes is, az alaptipus mellett.
 Azert hogy meg lehessen oket kulonboztetni a tobbitol anelkul hogy szetvalasztanank oket, igy a Decorator minta tokeletesen megfelel erre a celra.
 Minden konyv modell kiterjesztese az alap konyv osztalynak, a kiterjesztessel rendelkezo konyvek tulajdonsagai viszont oroklodnek az alaptipusabol, igy kulonbseget tudunk koztuk tenni.
+A projektben igazabol ugy implementaltam a dolgokat, ahogyan azt oran vettuk, de a nyelvi sajatossagok miatt ket tipust nem lehet osszehasonlitani, maximum explicit modon, mivel ha van egy szuloosztalyunk es 2 masik orokoltetett osztaly es ha ezen ket osztaly peldanyait belerakom egy olyan kontenerbe, ami az ososztaly tipusait tarolja, akkor 2 opciom van. Az egyik, hogy az ososztaly tipusara hivatkozok, a masik pedig ,hogy valami alapjan interpretalom az alosztalyokat (reinterpret_cast\<T>()) mely esetunkben azert nem jo, mert ha a ket orokoltetett osztalyunk mas jellemzokkel bir, az mashogy nez ki a memoriaban es ha az egyikre a masik osztaly szerint referalok, akkor a masik osztaly mezoi, metodusai lesznek ervenyesek, ami semmi esetben sem szerencses, raadasul az osztalyok mas mas meretu memoriat foglalhatnak le, es akar invalid ertekeket is kaphatunk vagy ami rosszabb a program mukodeset gatolja, ha egy olyan memorateruletre mutatunk, amit nem foglal le az adott osztalyunk.
+!!!BEMUTATON TOVABBI MAGYARAZAT, HA SZUKSEGES!!!
 
 ### Factory 
 A Factory minta celja, hogy elkulonitse a peldanyositas logikajat. Amig a controller kiveszi a reszet az peldanyositasbol, addig a factory eldonti, hogy mik legyenek peldanyositva.
