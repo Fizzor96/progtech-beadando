@@ -12,12 +12,7 @@ int main()
 
     std::unique_ptr<StorageController> sc = std::make_unique<StorageController>();
 
-    // std::vector<int> asd;
-    // std::cout << asd.size() << endl;
-
     sc->seedStorage();
-
-    // std::cout << std::to_string(Storage::getStorageInstance()->getBookStorage().size()) << std::endl;
 
     try
     {
@@ -28,6 +23,5 @@ int main()
         std::cerr << e << '\n';
     }
 
-    // system("pause");
     return 0;
 }

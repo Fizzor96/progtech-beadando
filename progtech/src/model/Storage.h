@@ -26,6 +26,11 @@ public:
         return bookStorage.size();
     }
 
+    std::vector<Book *> getStorage()
+    {
+        return bookStorage;
+    }
+
     ~Storage()
     {
         //delete heap allocated objs (otherwise memoryleak)
@@ -44,19 +49,46 @@ public:
         }
     }
 
-    void removeBookByType(Book book)
+    bool Contains(Book book)
     {
         for (size_t i = 0; i < bookStorage.size(); i++)
         {
             if (bookStorage[i]->getBookType() == book.getBookType())
             {
-                bookStorage.erase(bookStorage.begin() + i);
-            }
-            else
-            {
-                throw "We ran out of this type of book.";
+                return true;
             }
         }
+        return false;
+    }
+
+    void removeBookByType(Book book)
+    {
+        if (Contains(book))
+        {
+            for (size_t i = 0; i < bookStorage.size(); i++)
+            {
+                bookStorage.erase(bookStorage.begin() + i);
+                std::cout << "Succesful order!\n";
+                break;
+            }
+        }
+        else
+        {
+            throw "We ran out of this type of book.";
+        }
+
+        // for (size_t i = 0; i < bookStorage.size(); i++)
+        // {
+        //     if (bookStorage[i]->getBookType() == book.getBookType())
+        //     {
+        //         bookStorage.erase(bookStorage.begin() + i);
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         throw "We ran out of this type of book.";
+        //     }
+        // }
     }
 
     Book *getBookByType(std::string bookType)
@@ -111,8 +143,17 @@ public:
 
     std::string getQuantityAllByType()
     {
-        std::string asd = "";
-        return asd;
+        std::string temp = "";
+        for (size_t i = 0; i < bookStorage.size(); i++)
+        {
+            std::cout << i << " ";
+            bookStorage[i]->toStr();
+            if (i >= bookStorage.size() - 1)
+            {
+                break;
+            }
+        }
+        return temp;
     }
 
     //validation based on "types" are impossible, cuz types are not exist in the memory!!
@@ -129,7 +170,6 @@ public:
                     counter++;
                     if (counter >= max_quantity)
                     {
-                        // std::cout << "false" << std::endl;
                         return false;
                     }
                 }
@@ -137,7 +177,6 @@ public:
         }
         else if (bookStorage.size() == 0)
         {
-            // std::cout << "true" << std::endl;
             return true;
         }
         else
@@ -150,7 +189,8 @@ public:
     {
         while (validateQuantity(book))
         {
-            bookStorage.push_back(new Book(book->getBookType()));
+            bookStorage.push_back(new Book(book->getBookType(), book->getBookExtension()));
+            std::cout << "Succesful fill!\n";
             // if (book->getBookType() == "biography")
             // {
             //     bookStorage.push_back(new Book(book->getBookType()));

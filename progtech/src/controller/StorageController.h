@@ -31,7 +31,6 @@ public:
 
     void seedStorage()
     {
-        // cout << "SC seed storage func" << endl;
         fillStorageByType(std::string("biography"), std::string("physical"));
         fillStorageByType(std::string("gastronomy"), std::string("physical"));
         fillStorageByType(std::string("history"), std::string("physical"));
@@ -166,12 +165,22 @@ public:
         Book b = *storage->getBookByType(bookType);
         std::string response = "Coffee was ordered for: " + std::to_string(b.getCost());
         removeBookFromStorage(b);
+        std::cout << storage->getBookStorageSize() << std::endl;
         Log::promptOutput(response);
     }
     void setPrice(std::string bookType, float price)
     {
         notifyObserver(*storage->getBookByType(bookType), price);
     }
+    void booksToStr()
+    {
+        for (size_t i = 0; i < storage->getStorage().size(); i++)
+        {
+            std::cout << i + 1 << " ";
+            storage->getStorage()[i]->toStr();
+        }
+    }
+
     void handleUserInput()
     {
         string o = Log::getUserInput(logStorage.getStorageOptions());
@@ -179,6 +188,8 @@ public:
         string extension;
         while (isRunning)
         {
+            bookType = "";
+            extension = "";
             try
             {
                 if (o != "")
@@ -188,16 +199,19 @@ public:
                         bookType = chooseBookType();
                         extension = chooseExtension();
                         orderBook(bookType);
+                        o = Log::getUserInput(logStorage.getStorageOptions());
                     }
                     else if (o == "2")
                     {
                         bookType = chooseBookType();
                         extension = chooseExtension();
                         fillStorageByType(bookType, extension);
+                        o = Log::getUserInput(logStorage.getStorageOptions());
                     }
                     else if (o == "3")
                     {
-                        Log::promptOutput(storage->getQuantityAllByType());
+                        booksToStr();
+                        o = Log::getUserInput(logStorage.getStorageOptions());
                     }
                     else if (o == "4")
                     {
@@ -205,6 +219,12 @@ public:
                         extension = chooseExtension();
                         float price = std::stof(Log::getUserInput(logCost.getCostChangeOpstion()));
                         setPrice(bookType, price);
+                        o = Log::getUserInput(logStorage.getStorageOptions());
+                    }
+                    else if (o == "5")
+                    {
+                        std::cout << "Storage Size = " << storage->getStorage().size() << std::endl;
+                        o = Log::getUserInput(logStorage.getStorageOptions());
                     }
                     else if (o == "q")
                     {

@@ -64,6 +64,46 @@ public:
         setCost(price);
     }
 
+    void basicCostByType(std::string bookType)
+    {
+        if (bookType == "biography")
+        {
+            this->cost = 22.2;
+        }
+        else if (bookType == "gastronomy")
+        {
+            this->cost = 11.1;
+        }
+        else if (bookType == "history")
+        {
+            this->cost = 33.3;
+        }
+        else if (bookType == "technology")
+        {
+            this->cost = 44.4;
+        }
+    }
+
+    void basicCostByExt(std::string ext)
+    {
+        if (ext == "epub")
+        {
+            this->cost += 7.3;
+        }
+        else if (ext == "pdf")
+        {
+            this->cost += 9.1;
+        }
+        else if (ext == "txt")
+        {
+            this->cost += 2.2;
+        }
+        else if (ext == "physical")
+        {
+            this->cost += 10.0;
+        }
+    }
+
     Book()
     {
         // this->bookExtension = "";
@@ -74,12 +114,16 @@ public:
     Book(std::string bookType)
     {
         this->bookType = bookType;
+        basicCostByType(bookType);
+        basicCostByExt(this->bookExtension);
     }
 
     Book(std::string bookType, std::string ext)
     {
         this->bookType = bookType;
         this->bookExtension = ext;
+        basicCostByType(bookType);
+        basicCostByExt(ext);
     }
 
     ~Book() {}
